@@ -9,7 +9,8 @@
         <span class="sizeText">棋盘大小：</span>
         <van-stepper v-model="size"
                      min="4"
-                     max="64"></van-stepper>
+                     :max="maxSize"
+                     step="2"></van-stepper>
         <span class="emojiNumText">表情种类数量：</span>
         <van-stepper v-model="emojiNumber"
                      min="2"
@@ -35,8 +36,8 @@
         <div class="gamearea-yaxis"
              v-for="(yaxisData, index_y) in xaxisData"
              :key="index_y">
-          <img width="46"
-               height="46"
+          <img width="40"
+               height="40"
                :src='yaxisData'
                v-show="yaxisData !== '#'"
                @click="handleSelect(index_x, index_y)"
@@ -66,10 +67,21 @@ export default {
       score: 0,
       size: 12,
       emojiNumber: 12,
-      isCreated: false
+      isCreated: false,
+      maxSize: 64
     }
   },
+  mounted () {
+    this.showScreenWidth()
+  },
   methods: {
+    showScreenWidth () {
+      let max = Math.floor((document.body.clientWidth - 100.0) / 42.0)
+      if (max % 2 === 0) this.maxSize = max
+      else this.maxSize = max - 1
+      if (Math.floor(this.maxSize / 2) % 2 === 0) this.size = this.maxSize / 2
+      else this.size = this.maxSize / 2 - 1
+    },
     setAxis (size) {
       this.xaxis = size
       this.yaxis = size
@@ -221,8 +233,8 @@ export default {
       flex 0 0 auto
       .gamearea-yaxis {
         margin 2px 2px 2px 2px
-        width 48px
-        height 48px
+        width 42px
+        height 42px
       }
       .active {
         border solid 2px white
