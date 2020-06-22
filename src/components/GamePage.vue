@@ -36,10 +36,10 @@
         <div class="gamearea-yaxis"
              v-for="(yaxisData, index_y) in xaxisData"
              :key="index_y">
-          <img width="40"
-               height="40"
+          <img :width="emojiSize"
+               :height="emojiSize"
                :src='yaxisData'
-               v-show="yaxisData !== '#'"
+               v-if="yaxisData !== '#'"
                @click="handleSelect(index_x, index_y)"
                :class="{'active': currentSelected_x === index_x && currentSelected_y === index_y}">
         </div>
@@ -68,7 +68,8 @@ export default {
       size: 12,
       emojiNumber: 12,
       isCreated: false,
-      maxSize: 64
+      maxSize: 64,
+      emojiSize: 32
     }
   },
   mounted () {
@@ -76,7 +77,7 @@ export default {
   },
   methods: {
     showScreenWidth () {
-      let max = Math.floor((document.body.clientWidth - 100.0) / 42.0)
+      let max = Math.floor((document.body.clientWidth - 80.0) / (this.emojiSize + 2))
       if (max % 2 === 0) this.maxSize = max
       else this.maxSize = max - 1
       if (Math.floor(this.maxSize / 2) % 2 === 0) this.size = this.maxSize / 2
@@ -233,8 +234,8 @@ export default {
       flex 0 0 auto
       .gamearea-yaxis {
         margin 2px 2px 2px 2px
-        width 42px
-        height 42px
+        width 34px
+        height 34px
       }
       .active {
         border solid 2px white
