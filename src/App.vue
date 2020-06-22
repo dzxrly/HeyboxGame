@@ -22,7 +22,7 @@ html {
   height: 100%;
   margin: 0;
   background-color: #606266;
-  background-image: url("assets/app_bg.jpg");
-  background-repeat: no-repeat !important;
+  background-image: url("https://cdn.max-c.com/heybox_web/images/20191118/app_bg.jpg");
+  background-repeat: repeat !important;
 }
 </style>

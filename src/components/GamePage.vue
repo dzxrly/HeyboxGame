@@ -2,6 +2,10 @@
   <div class="gamepage-wrap">
     <div class="gameinfo-wrap">
       <div class="row1">
+        <span class="gamename">小黑盒连连看</span>
+        <span class="auothername">By 鎧羅突擊弩賊</span>
+      </div>
+      <div class="row2">
         <span class="sizeText">棋盘大小：</span>
         <van-stepper v-model="size"
                      min="4"
@@ -11,7 +15,7 @@
                      min="2"
                      max="36"></van-stepper>
       </div>
-      <div class="row2">
+      <div class="row3">
         <van-button class="btn"
                     size="small"
                     color="#f2f3f5"
@@ -146,17 +150,37 @@ export default {
   width 100%
   height 100%
   .gameinfo-wrap {
-    margin-top 3vh
+    margin-top 1vh
     display flex
     flex-flow column nowrap
     text-align center
     justify-content center
+    flex 0 0 auto
     .row1 {
-      margin 10px 0 5px 0
+      margin 2px 0 5px 0
+      display flex
+      flex-flow column nowrap
+      text-align center
+      justify-content center
+      flex 0 0 auto
+      .gamename {
+        color #f2f3f5
+        font-size 30px
+        font-weight bolder
+      }
+      .auothername {
+        color #f2f3f5
+        font-size 12px
+        font-font-weight lighter
+      }
+    }
+    .row2 {
+      margin 5px 0 5px 0
       display flex
       flex-flow row nowrap
       text-align center
       justify-content center
+      flex 0 0 auto
       .sizeText {
         margin 0 5px 0 10px
         color #f2f3f5
@@ -168,12 +192,13 @@ export default {
         font-size 20px
       }
     }
-    .row2 {
+    .row3 {
       margin 5px 0 10px 0
       display flex
       flex-flow row nowrap
       text-align center
       justify-content center
+      flex 0 0 auto
       .btn {
         margin 0 10px 0 10px
         width 50px
@@ -193,6 +218,7 @@ export default {
       flex-flow row nowrap
       text-align center
       justify-content center
+      flex 0 0 auto
       .gamearea-yaxis {
         margin 2px 2px 2px 2px
         width 48px
